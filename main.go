@@ -17,9 +17,10 @@ func main() {
 		Switch2
 		Assersion
 		Assersion2
+		Variable
 	)
 
-	choice := Number
+	choice := Variable
 
 	switch choice {
 	case First:
@@ -28,6 +29,9 @@ func main() {
 		fmt.Println(animals.ElephantFeed())
 		fmt.Println(animals.MonkeyFeed())
 		fmt.Println(animals.RabbitFeed())
+	case Variable:
+		sample.VariableSample()
+
 	case Number:
 		sample.NumberSample()
 
