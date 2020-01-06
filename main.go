@@ -20,9 +20,10 @@ func main() {
 		Variable
 		Variable2
 		Variable3
+		Func1
 	)
 
-	choice := Variable
+	choice := Func1
 
 	switch choice {
 	case First:
@@ -39,7 +40,8 @@ func main() {
 		sample.MathVariable()
 	case Number:
 		sample.NumberSample()
-
+	case Func1:
+		sample.FuncSample()
 	case Loop:
 		sample.LoopSample()
 
