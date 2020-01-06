@@ -18,6 +18,8 @@ func main() {
 		Assersion
 		Assersion2
 		Variable
+		Variable2
+		Variable3
 	)
 
 	choice := Variable
@@ -31,7 +33,10 @@ func main() {
 		fmt.Println(animals.RabbitFeed())
 	case Variable:
 		sample.VariableSample()
-
+	case Variable2:
+		sample.ChangeVariable()
+	case Variable3:
+		sample.MathVariable()
 	case Number:
 		sample.NumberSample()
 
