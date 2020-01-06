@@ -23,7 +23,7 @@ func main() {
 		Func1
 	)
 
-	choice := Func1
+	choice := Assersion2
 
 	switch choice {
 	case First:
@@ -63,9 +63,11 @@ func main() {
 		sample.Anything('海')
 		sample.Anything("海") //区別される
 		sample.Anything("日本語")
+		sample.Anything2(3)
 
 	case Assersion2:
-		sample.Anything2(3)
+		sample.AssersionSample()
+
 	default:
 		fmt.Println("unknown case")
 	}
