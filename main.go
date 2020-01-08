@@ -24,9 +24,10 @@ func main() {
 		Variable3
 		Func1
 		GoRoutine
+		RefData
 	)
 
-	choice := GoRoutine
+	choice := RefData
 
 	switch choice {
 	case First:
@@ -64,6 +65,9 @@ func main() {
 
 	case GoRoutine:
 		sample.ParallelSample()
+
+	case RefData:
+		sample.RefDataSample()
 
 	default:
 		fmt.Println("unknown case")
