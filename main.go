@@ -19,9 +19,10 @@ func main() {
 		Variable2
 		Variable3
 		Func1
+		GoRoutine
 	)
 
-	choice := Control
+	choice := GoRoutine
 
 	switch choice {
 	case First:
@@ -56,6 +57,9 @@ func main() {
 
 	case Assersion2:
 		sample.AssersionSample()
+
+	case GoRoutine:
+		sample.ParallelSample()
 
 	default:
 		fmt.Println("unknown case")
