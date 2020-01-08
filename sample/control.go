@@ -4,7 +4,23 @@ import (
 	"fmt"
 )
 
-func LoopSample() {
+func ControlSample() {
+	loopSample()
+
+	switchSample(3)
+	switchSample(1)
+	switchSample(5)
+
+	switchFallSample("A")
+	switchFallSample("B")
+	switchFallSample("CDE")
+
+	gotoSample()
+	labelSample()
+	labelLoopSample()
+}
+
+func loopSample() {
 	i := 0
 	for {
 		i++
@@ -26,7 +42,7 @@ func LoopSample() {
 	}
 }
 
-func SwitchSample(n int) {
+func switchSample(n int) {
 
 	switch n {
 	case 1, 2:
@@ -38,7 +54,7 @@ func SwitchSample(n int) {
 	}
 }
 
-func SwitchFallSample(s string) {
+func switchFallSample(s string) {
 	switch s {
 	case "A":
 		s += "B"
@@ -53,4 +69,45 @@ func SwitchFallSample(s string) {
 		s += "E"
 	}
 	fmt.Println(s)
+}
+
+func gotoSample() {
+	for {
+		for {
+			for {
+				fmt.Println("inner loop")
+				goto DONE
+			}
+		}
+	}
+DONE:
+	fmt.Println("done")
+}
+
+func labelSample() {
+LOOP:
+	for {
+		for {
+			for {
+				fmt.Println("開始")
+				break LOOP
+			}
+			fmt.Println("通らない") // 通らない箇所は警告になる
+		}
+		fmt.Println("通らない") // 通らない箇所は警告になる
+	}
+	fmt.Println("完了")
+}
+
+func labelLoopSample() {
+L:
+	for i := 1; i <= 3; i++ {
+		for j := 1; j <= 3; j++ {
+			if j > 1 {
+				continue L
+			}
+			fmt.Printf("%d * %d = %d\n", i, j, i*j)
+		}
+		fmt.Println("ここは実行されない") // 通らないけど、これは警告にならない、、、、
+	}
 }

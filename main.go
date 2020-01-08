@@ -12,9 +12,7 @@ func main() {
 	const (
 		First = iota
 		Number
-		Loop
-		Switch
-		Switch2
+		Control
 		Assersion
 		Assersion2
 		Variable
@@ -23,7 +21,7 @@ func main() {
 		Func1
 	)
 
-	choice := Assersion2
+	choice := Control
 
 	switch choice {
 	case First:
@@ -42,18 +40,9 @@ func main() {
 		sample.NumberSample()
 	case Func1:
 		sample.FuncSample()
-	case Loop:
-		sample.LoopSample()
 
-	case Switch:
-		sample.SwitchSample(3)
-		sample.SwitchSample(1)
-		sample.SwitchSample(5)
-
-	case Switch2:
-		sample.SwitchFallSample("A")
-		sample.SwitchFallSample("B")
-		sample.SwitchFallSample("CDE")
+	case Control:
+		sample.ControlSample()
 
 	case Assersion:
 
