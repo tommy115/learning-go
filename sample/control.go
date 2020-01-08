@@ -2,22 +2,44 @@ package sample
 
 import (
 	"fmt"
+	"log"
+	"os"
 )
 
 func ControlSample() {
+	logger := log.New(os.Stdout, "[ControlSample] ", log.Ldate|log.Ltime|log.Lshortfile)
+
+	logger.Println("loopSample")
 	loopSample()
 
+	logger.Println("switchSample")
 	switchSample(3)
 	switchSample(1)
 	switchSample(5)
 
+	logger.Println("switchFallSample")
 	switchFallSample("A")
 	switchFallSample("B")
 	switchFallSample("CDE")
 
+	logger.Println("gotoSample")
 	gotoSample()
+	logger.Println("labelSample")
 	labelSample()
 	labelLoopSample()
+
+	logger.Println("deferSample")
+	deferSample()
+	deferManySample()
+	deferFuncSample()
+
+	/*
+		logger.Println("panicSample")
+		panicSample()
+	*/
+
+	logger.Println("recoverSample")
+	recoverSample()
 }
 
 func loopSample() {
@@ -110,4 +132,45 @@ L:
 		}
 		fmt.Println("ここは実行されない") // 通らないけど、これは警告にならない、、、、
 	}
+}
+
+func deferSample() {
+	defer fmt.Println("defer")
+	fmt.Println("done")
+}
+
+func deferManySample() {
+	defer fmt.Println("defer 1")
+	defer fmt.Println("defer 2")
+	defer fmt.Println("defer 3")
+
+	fmt.Println("done")
+}
+
+func deferFuncSample() {
+	defer func() {
+		fmt.Println("1")
+		fmt.Println("2")
+		fmt.Println("3")
+	}()
+	fmt.Println("done")
+}
+
+func panicSample() {
+	defer fmt.Println("これは実行される")
+
+	panic("runtime error!")
+	fmt.Println("これは実行されない")
+}
+
+// これは正常に終了する。
+func recoverSample() {
+	defer func() {
+		if x := recover(); x != nil {
+			fmt.Println(x)
+		}
+	}()
+
+	panic("panic!")
+	fmt.Println("実行されない")
 }
