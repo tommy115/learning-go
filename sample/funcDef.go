@@ -2,6 +2,10 @@ package sample
 
 import "fmt"
 
+func init() {
+	fmt.Println("init in funcDef")
+}
+
 // FuncSample ... 関数サンプル
 func FuncSample() {
 	fmt.Printf("func1=%d\n", func1(1, 2))

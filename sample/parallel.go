@@ -13,8 +13,13 @@ const (
 	subLoopNum  = 1000
 )
 
+func init() {
+	// importした順に呼ばれる？
+	fmt.Println("init in parallel")
+}
+
 func ParallelSample() {
-	logger := log.New(os.Stdout, "ParallelSample", log.Ldate|log.Ltime|log.Lshortfile)
+	logger := log.New(os.Stdout, "[ParallelSample] ", log.Ldate|log.Ltime|log.Lshortfile)
 	/*
 			logger.Println("mainRoutine")
 			mainRoutine()
@@ -54,10 +59,14 @@ func mainRoutineNoName() {
 }
 
 func outputEnvironment() {
-	go func() {
-		//		time.Sleep(10000)
-		fmt.Println("go routine")
-	}()
+	// goルーチをを3つ作る。
+	for index := 0; index < 3; index++ {
+		go func() {
+			//出力されないのはなぜ？
+			fmt.Println("go routine")
+		}()
+	}
+	time.Sleep(mainLoopNum)
 	fmt.Printf("Num CPU: %d\n", runtime.NumCPU())
 	fmt.Printf("NumGoRoutine: %d\n", runtime.NumGoroutine())
 	fmt.Printf("Version: %s\n", runtime.Version())

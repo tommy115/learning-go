@@ -7,6 +7,10 @@ import (
 	"./sample"
 )
 
+func init() {
+	fmt.Println("init in main")
+}
+
 func main() {
 
 	const (
